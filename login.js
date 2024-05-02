@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const loginForm = document.getElementById('loginForm');
-// Check if user is in localStorage and redirect accordingly
 
     loginForm.addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -34,27 +33,20 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('userData', JSON.stringify(data));
             console.log('Login successful:', data);
 
-            // Show success message with SweetAlert
-            Swal.fire({
-                title: 'Login Successful!',
-                text: 'You are redirected to the main page.',
-                icon: 'success',
-                timer: 2000, // Display the message for 2 seconds
-                showConfirmButton: false // Hide the "Close" button
-            }).then(() => {
+            // Show success alert
+            const successAlert = document.getElementById('successAlert');
+            successAlert.classList.remove('d-none');
+
+            // Redirect after 2 seconds
+            setTimeout(() => {
                 window.location.href = 'index.html';
-            });
+            }, 2000);
         } catch (error) {
             console.error('Login error:', error);
 
-            // Show error message with SweetAlert
-            Swal.fire({
-                title: 'Error!',
-                text: 'An error occurred during login. Please try again later.',
-                icon: 'error',
-            });
+            // Show error alert
+            const errorAlert = document.getElementById('errorAlert');
+            errorAlert.classList.remove('d-none');
         }
     });
 });
-
-
