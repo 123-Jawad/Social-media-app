@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const userData = localStorage.getItem('userData');
     if (!userData) {
-        window.location.href = 'login.html'; // Redirect to index.html if user data exists
+        window.location.href = './login.html'; // Redirect to index.html if user data exists
     }
 
     const postsContainer = document.getElementById("postsContainer");
